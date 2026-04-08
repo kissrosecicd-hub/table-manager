@@ -1,176 +1,71 @@
-# Table Manager
+# 📊 Table Manager
 
-Приватный дашборд для управления таблицами — локальный Airtable без внешней базы данных. Хранит всё в JSON-файле на вашем сервере.
+Веб-приложение для управления табличными данными. Создавайте, редактируйте, фильтруйте и ищите записи в множестве таблиц — всё в одном интерфейсе.
 
-![Top Layout Light](screenshots/top-layout-light.png)
+## ✨ Возможности
 
-## Возможности
+- **Множественные таблицы** — переключение между таблицами через вкладки или боковую панель
+- **CRUD операции** — создание, чтение, редактирование, удаление записей
+- **Поиск** — глобальный поиск по всем таблицам и поиск внутри таблицы
+- **Фильтрация** — фильтрация записей по любому столбцу
+- **Виртуальный скролл** — производительная работа с большими таблицами
+- **Экспорт / Импорт** — выгрузка и загрузка данных
+- **Поиск дубликатов** — обнаружение повторяющихся записей
+- **Управление колонками** — настройка видимости и порядка столбцов
+- **Настраиваемый layout** — сворачиваемая боковая панель, компактный и полный виды
+- **Тёмная тема** — переключение светлой / тёмной темы
 
-### Управление данными
-- **CRUD таблиц** — создание, переименование, удаление
-- **Inline-редактирование** — двойной клик по ячейке
-- **Виртуализация** — `@tanstack/react-virtual` для больших таблиц (>100 строк)
-- **Пагинация** — 25 / 50 / 100 / 200 записей на страницу
-- **Мульти-сортировка** — по нескольким колонкам
-- **Фильтры** — по колонкам с пресетами (localStorage)
+## 📸 Скриншоты
 
-### Поиск и навигация
-- **Глобальный поиск** — по всем таблицам с подсветкой совпадений
-- **Command Palette** — `Ctrl+K` для быстрого доступа к командам
-- **Keyboard shortcuts** — `T` (таблицы), `D` (данные), `←/→` (навигация)
+| # | Скриншот | Описание |
+|---|----------|----------|
+| 1 | [![Main View](screenshots/01-main-view.png)](screenshots/01-main-view.png) | **Главный вид** — вкладки таблиц + таблица «Контакты» с inline-редактированием |
+| 2 | [![Main View Full](screenshots/02-main-view-fullscreen.png)](screenshots/02-main-view-fullscreen.png) | **Главный вид** — полный вид с панелью инструментов |
+| 3 | [![Tabs Only](screenshots/03-tabs-only.png)](screenshots/03-tabs-only.png) | **Вкладки таблиц** — компактный вид только с навигацией по таблицам |
+| 4 | [![Full Height](screenshots/04-table-full-height.png)](screenshots/04-table-full-height.png) | **Таблица на полную высоту** — развёрнутый вид без боковой панели |
+| 5 | [![Sidebar Expanded](screenshots/05-sidebar-expanded.png)](screenshots/05-sidebar-expanded.png) | **Развёрнутая боковая панель** — список всех 8 таблиц слева |
+| 6 | [![Sidebar Collapsed](screenshots/06-sidebar-collapsed.png)](screenshots/06-sidebar-collapsed.png) | **Свёрнутая боковая панель** — минималистичный вид |
+| 7 | [![Sidebar Only](screenshots/07-sidebar-only.png)](screenshots/07-sidebar-only.png) | **Только боковая панель** — вид с скрытой таблицей |
+| 8 | [![Search Result](screenshots/08-search-result.png)](screenshots/08-search-result.png) | **Результат поиска** — фильтрация таблицы по имени «Алексей Иванов» |
+| 9 | [![Sidebar Search](screenshots/09-sidebar-search.png)](screenshots/09-sidebar-search.png) | **Поиск в боковой панели** — мгновенный фильтр таблиц по названию |
+| 10 | [![Global Search Dropdown](screenshots/10-global-search-dropdown.png)](screenshots/10-global-search-dropdown.png) | **Глобальный поиск** — dropdown с результатами по всем таблицам |
+| 11 | [![Highlighted Row](screenshots/11-highlighted-row.png)](screenshots/11-highlighted-row.png) | **Подсветка найденной строки** — выделение результата поиска жёлтым |
+| 12 | [![Search Dropdown Full](screenshots/12-search-dropdown-full.png)](screenshots/12-search-dropdown-full.png) | **Dropdown глобального поиска** — результаты с навигацией к записи |
+| 13 | [![Global Search Page](screenshots/13-global-search-page.png)](screenshots/13-global-search-page.png) | **Страница глобального поиска** — полноценный поиск по всем таблицам |
 
-### Импорт / Экспорт
-- **CSV / JSON** — drag-and-drop импорт с превью
-- **Режимы импорта** — новая таблица или добавление в существующую
-- **Экспорт** — CSV и JSON
-
-### Дополнительно
-- **Дубликаты** — поиск повторяющихся значений по колонке
-- **Копирование записей** — single и batch
-- **Bulk операции** — batch copy/delete через единый API
-- **Контекстное меню** — правый клик на записях
-- **Shift+Click** — выделение диапазона
-- **Избранное** — таблицы в избранном (localStorage)
-- **Layout modes** — таблицы сверху или боковая панель
-- **Тёмная / светлая тема** — переключение, сохраняется
-- **Оптимистичные обновления** — UI до ответа сервера, rollback при ошибке
-
-## Скриншоты
-
-### Основной вид
-![Top Layout Light](screenshots/top-layout-light.png)
-*Светлая тема, режим «таблицы сверху»*
-
-![Top Layout Dark](screenshots/top-layout-dark.png)
-*Тёмная тема*
-
-### Боковая панель
-![Sidebar Layout Light](screenshots/sidebar-layout-light.png)
-*Режим «боковая панель»*
-
-![Sidebar Layout Dark](screenshots/sidebar-layout-dark.png)
-*Тёмная тема, боковая панель*
-
-### Поиск в сайдбаре
-![Sidebar Search](screenshots/sidebar-search.png)
-*Фильтрация таблиц по названию*
-
-### Таблица
-![Table Navigation](screenshots/table-navigation.png)
-*Навигация по записям*
-
-![Search & Filter](screenshots/search-filter.png)
-*Поиск и фильтрация внутри таблицы*
-
-### Inline-редактирование
-![Inline Edit](screenshots/inline-edit.png)
-*Двойной клик для редактирования ячейки*
-
-### Command Palette
-![Command Palette](screenshots/command-palette.png)
-*`Ctrl+K` — быстрый доступ к командам*
-
-### Свёрнутые секции
-![Collapsed Tables](screenshots/collapsed-tables.png)
-*Скрытие панелей таблиц и данных*
-
-## Установка
-
-### Требования
-- Node.js >= 20
-- npm
-
-### Быстрый старт
+## 🚀 Быстрый старт
 
 ```bash
-# Клонировать репозиторий
 git clone https://github.com/<your-username>/table-manager.git
 cd table-manager
-
-# Установить зависимости
 npm install
-
-# Скопировать .env.example
-cp .env.example .env
-
-# Запустить dev-сервер
 npm run dev
 ```
 
-Откройте [http://localhost:49721](http://localhost:49721)
+Откройте [http://localhost:3000](http://localhost:3000)
 
-### Демо-данные
+## 🛠 Стек
 
-Для заполнения 8 демо-таблицами (77 записей):
+- **Next.js** / **React** — фреймворк
+- **TypeScript** — типизация
+- **TanStack Table** — виртуальный скролл, сортировка, фильтрация
+- **shadcn/ui** + **Tailwind CSS** — компоненты и стили
 
-```bash
-node scripts/seed-demo.js
-```
+## 📦 Демо-данные
 
-## Production
+Приложение поставляется с 8 предустановленными таблицами:
 
-### Билд и запуск
+| Таблица | Записей |
+|---------|---------|
+| 👥 Контакты | 10 |
+| 📋 Задачи | 12 |
+| 💰 Финансы | 10 |
+| 📚 Книги | 8 |
+| 🏋️ Тренировки | 8 |
+| 🌍 Путешествия | 5 |
+| 🎵 Музыка | 7 |
+| 📝 Заметки | 6 |
 
-```bash
-npm run build
-npm start
-```
-
-### systemd
-
-```bash
-# Отредактировать пути в table-manager.service
-sudo cp table-manager.service /etc/systemd/system/
-sudo systemctl daemon-reload
-sudo systemctl enable table-manager
-sudo systemctl start table-manager
-```
-
-## Структура проекта
-
-```
-table-manager/
-├── src/
-│   ├── app/                  # Next.js App Router
-│   │   ├── api/              # REST API (таблицы, записи, колонки, поиск, экспорт)
-│   │   ├── search/           # Страница глобального поиска
-│   │   ├── layout.tsx
-│   │   └── page.tsx
-│   ├── components/
-│   │   ├── DataTable.tsx     # Основная таблица с виртуализацией
-│   │   ├── TableCards.tsx    # Карточки таблиц + импорт
-│   │   ├── CommandPalette.tsx
-│   │   └── Toast.tsx
-│   ├── lib/
-│   │   └── store.ts          # Файловое хранилище (JSON + mutex)
-│   └── types/
-│       └── index.ts          # TypeScript интерфейсы
-├── data/
-│   └── store.json            # БД (игнорируется в git)
-├── scripts/
-│   ├── dev.sh                # Dev-сервер + открытие браузера
-│   ├── seed-demo.js          # Генерация демо-данных
-│   ├── take-screenshots.js   # Скриншоты через Playwright
-│   └── audit-gitignore.sh    # Аудит секретов
-├── screenshots/              # Скриншоты для README
-├── public/                   # Статические файлы
-├── table-manager.service     # systemd юнит
-└── .env.example
-```
-
-## Технологии
-
-| | |
-|---|---|
-| **Фреймворк** | Next.js 15 (App Router) |
-| **Язык** | TypeScript (strict) |
-| **UI** | React 19 |
-| **Стили** | Tailwind CSS v4 + CSS variables |
-| **Виртуализация** | @tanstack/react-virtual |
-| **Модалки** | Radix UI |
-| **Иконки** | Lucide React |
-| **Шрифты** | Fira Sans (Cyrillic + Latin), Fira Code |
-
-## Лицензия
+## 📝 Лицензия
 
 MIT
