@@ -26,15 +26,9 @@ export default function Home() {
   const searchTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const searchContainerRef = useRef<HTMLDivElement>(null);
   const [showCommandPalette, setShowCommandPalette] = useState(false);
-  const [tablesVisible, setTablesVisible] = useState(() => {
-    try { const v = localStorage.getItem('tm-tablesVisible'); return v !== null ? v === 'true' : true; } catch { return true; }
-  });
-  const [dataVisible, setDataVisible] = useState(() => {
-    try { const v = localStorage.getItem('tm-dataVisible'); return v !== null ? v === 'true' : true; } catch { return true; }
-  });
-  const [layoutMode, setLayoutMode] = useState<'top' | 'sidebar'>(() => {
-    try { return localStorage.getItem('tm-layout') as 'top' | 'sidebar' || 'top'; } catch { return 'top'; }
-  });
+  const [tablesVisible, setTablesVisible] = useState(true);
+  const [dataVisible, setDataVisible] = useState(true);
+  const [layoutMode, setLayoutMode] = useState<'top' | 'sidebar'>('top');
   const [sidebarSearch, setSidebarSearch] = useState('');
   const [editTableId, setEditTableId] = useState<string | null>(null);
   const [editTableName, setEditTableName] = useState('');
@@ -75,6 +69,18 @@ export default function Home() {
     try {
       const t = localStorage.getItem('tm-theme');
       if (t) { setThemeIcon(t as 'light' | 'dark'); document.documentElement.setAttribute('data-theme', t); }
+    } catch {}
+  }, []);
+
+  // Restore layoutMode from localStorage (client-only, avoids hydration mismatch)
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem('tm-layout') as 'top' | 'sidebar' | null;
+      if (saved) setLayoutMode(saved);
+      const tv = localStorage.getItem('tm-tablesVisible');
+      if (tv !== null) setTablesVisible(tv === 'true');
+      const dv = localStorage.getItem('tm-dataVisible');
+      if (dv !== null) setDataVisible(dv === 'true');
     } catch {}
   }, []);
 
