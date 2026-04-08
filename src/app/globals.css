@@ -1,0 +1,239 @@
+@import "tailwindcss";
+
+/* ============================================
+   LIGHT THEME (eye-friendly, myopia -3 to -5)
+   Warm beige-gray tones, no pure white
+   Reduced contrast, soft edges
+   ============================================ */
+[data-theme="light"] {
+  --color-bg-marketing: #F5F5F5;
+  --color-bg-panel: #FAFAFA;
+  --color-bg-surface: #FFFFFF;
+  --color-bg-surface-hover: #F0F0F0;
+  --color-text-primary: #1A1A1A;
+  --color-text-secondary: #3A3A3A;
+  --color-text-tertiary: #5A5A5A;
+  --color-text-quaternary: #7A7A7A;
+  --color-brand: #5B7553;
+  --color-brand-hover: #4A6343;
+  --color-accent: #5B7553;
+  --color-success: #2E7D5A;
+  --color-danger: #B53330;
+  --color-danger-hover: #9A2A27;
+  --color-border: rgba(0,0,0,0.10);
+  --color-border-subtle: rgba(0,0,0,0.05);
+  --color-border-solid: #E0E0E0;
+  --color-overlay: rgba(0,0,0,0.7);
+}
+
+/* ============================================
+   DARK THEME (original)
+   ============================================ */
+[data-theme="dark"] {
+  --color-bg-marketing: #08090A;
+  --color-bg-panel: #0F1011;
+  --color-bg-surface: #191A1B;
+  --color-bg-surface-hover: #28282C;
+  --color-text-primary: #F7F8F8;
+  --color-text-secondary: #D0D6E0;
+  --color-text-tertiary: #8A8F98;
+  --color-text-quaternary: #62666D;
+  --color-brand: #9B8EC4;
+  --color-brand-hover: #B3A8D8;
+  --color-accent: #9B8EC4;
+  --color-success: #34D399;
+  --color-danger: #F87171;
+  --color-danger-hover: #EF4444;
+  --color-border: rgba(255,255,255,0.08);
+  --color-border-subtle: rgba(255,255,255,0.05);
+  --color-border-solid: #23252A;
+  --color-overlay: rgba(0,0,0,0.85);
+}
+
+/* Default to light if no attribute set */
+html:not([data-theme]) {
+  --color-bg-marketing: #F5F5F5;
+  --color-bg-panel: #FAFAFA;
+  --color-bg-surface: #FFFFFF;
+  --color-bg-surface-hover: #F0F0F0;
+  --color-text-primary: #1A1A1A;
+  --color-text-secondary: #3A3A3A;
+  --color-text-tertiary: #5A5A5A;
+  --color-text-quaternary: #7A7A7A;
+  --color-brand: #5B7553;
+  --color-brand-hover: #4A6343;
+  --color-accent: #5B7553;
+  --color-success: #2E7D5A;
+  --color-danger: #B53330;
+  --color-danger-hover: #9A2A27;
+  --color-border: rgba(0,0,0,0.10);
+  --color-border-subtle: rgba(0,0,0,0.05);
+  --color-border-solid: #E0E0E0;
+  --color-overlay: rgba(0,0,0,0.5);
+}
+
+@theme inline {
+  --color-bg-marketing: var(--color-bg-marketing);
+  --color-bg-panel: var(--color-bg-panel);
+  --color-bg-surface: var(--color-bg-surface);
+  --color-bg-surface-hover: var(--color-bg-surface-hover);
+  --color-text-primary: var(--color-text-primary);
+  --color-text-secondary: var(--color-text-secondary);
+  --color-text-tertiary: var(--color-text-tertiary);
+  --color-text-quaternary: var(--color-text-quaternary);
+  --color-brand: var(--color-brand);
+  --color-brand-hover: var(--color-brand-hover);
+  --color-accent: var(--color-accent);
+  --color-success: var(--color-success);
+  --color-danger: var(--color-danger);
+  --color-danger-hover: var(--color-danger-hover);
+  --color-border: var(--color-border);
+  --color-border-subtle: var(--color-border-subtle);
+  --color-border-solid: var(--color-border-solid);
+  --color-overlay: var(--color-overlay);
+  --font-sans: var(--font-fira-sans), 'Inter Variable', -apple-system, system-ui, sans-serif;
+  --font-mono: var(--font-fira-code), 'SF Mono', Menlo, monospace;
+}
+
+html {
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow-x: hidden !important;
+}
+
+* {
+  font-feature-settings: "cv01", "ss03";
+}
+
+body {
+  margin: 0 !important;
+  padding: 0 !important;
+  background: var(--color-bg-marketing);
+  color: var(--color-text-primary);
+  font-family: var(--font-fira-sans), -apple-system, system-ui, sans-serif;
+  font-feature-settings: "cv01", "ss03";
+  will-change: background, color;
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+/* Убираем белые рамки фокуса */
+:focus, :focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Ядерный вариант для модалок z-[100] — убираем только outline фокуса */
+.fixed.z-\[100\] *,
+.fixed.z-\[100\] *:focus,
+.fixed.z-\[100\] *:focus-visible {
+  outline: none !important;
+  outline-width: 0 !important;
+  outline-style: none !important;
+  box-shadow: none !important;
+  -webkit-focus-ring-color: transparent !important;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg-panel);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-quaternary);
+}
+
+/* Selection */
+::selection {
+  background: var(--color-brand);
+  color: #fff;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; transform: scale(0.95) translateY(8px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes modalBackdropFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Modal animation classes */
+.modal-animate-in {
+  animation: modalFadeIn 200ms ease-out;
+}
+.modal-backdrop-animate {
+  animation: modalBackdropFadeIn 150ms ease-out;
+}
+
+/* Custom scrollbar for table container */
+.table-scroll::-webkit-scrollbar {
+  height: 10px;
+  width: 10px;
+}
+.table-scroll::-webkit-scrollbar-track {
+  background: var(--color-bg-panel);
+  border-radius: 5px;
+}
+.table-scroll::-webkit-scrollbar-thumb {
+  background: var(--color-brand);
+  border-radius: 5px;
+}
+.table-scroll::-webkit-scrollbar-thumb:hover {
+  background: var(--color-brand-hover);
+}
+
+/* Modal overlay backdrop blur */
+[data-theme="light"] .modal-backdrop {
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+[data-theme="dark"] .modal-backdrop {
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+
+/* Collapsible sections — smooth height animation */
+.section-collapsible {
+  display: grid;
+  grid-template-rows: 1fr;
+  transition: grid-template-rows 300ms ease-out, opacity 250ms ease-out, margin 300ms ease-out, padding 300ms ease-out;
+}
+.section-collapsed {
+  grid-template-rows: 0fr;
+  opacity: 0;
+}
+.section-collapsed > .section-inner {
+  overflow: hidden;
+  min-height: 0;
+}
+.section-inner {
+  overflow: hidden;
+  min-height: 0;
+}
+
