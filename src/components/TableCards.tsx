@@ -270,12 +270,12 @@ export function TableCards({ tables, selectedId, onSelect, onRefresh, onTablesRe
         <p className="text-center py-8 text-base" style={{ color: 'var(--color-text-quaternary)' }}>Загрузка...</p>
       ) : (
         <div className="space-y-3">
-          <div className="relative" style={{ maxWidth: 280 }}>
-            <Search size={14} className="absolute left-2.5 top-2" style={{ color: 'var(--color-text-quaternary)' }} />
+          <div className="relative" style={{ maxWidth: 320 }}>
+            <Search size={16} className="absolute left-3 top-2.5" style={{ color: 'var(--color-text-quaternary)' }} />
             <input
               type="text" value={search} onChange={e => setSearch(e.target.value)}
               placeholder="Поиск таблиц..."
-              className="pl-8 pr-3 py-2 text-base rounded-lg outline-none"
+              className="pl-9 pr-3 py-2.5 text-base rounded-lg outline-none"
               style={{ background: 'var(--color-bg-surface)', border: '1px solid var(--color-border)', color: 'var(--color-text-primary)' }}
             />
           </div>

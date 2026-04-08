@@ -489,32 +489,32 @@ export default function Home() {
           <div className="flex gap-4" style={{ minHeight: 'calc(100vh - 120px)' }}>
             {/* Sidebar — T toggle */}
             {tablesVisible && (
-            <aside className="w-72 flex-shrink-0 flex flex-col rounded-xl border overflow-hidden" style={{ background: 'var(--color-bg-panel)', borderColor: 'var(--color-border)', maxHeight: 'calc(100vh - 120px)' }}>
+            <aside className="w-80 flex-shrink-0 flex flex-col rounded-xl border overflow-hidden" style={{ background: 'var(--color-bg-panel)', borderColor: 'var(--color-border)', maxHeight: 'calc(100vh - 120px)' }}>
               {/* Sticky header */}
               <div className="flex-shrink-0 p-3 pb-0" style={{ position: 'sticky', top: 0, zIndex: 10, background: 'var(--color-bg-panel)', borderBottom: '1px solid var(--color-border)' }}>
                 <div className="flex items-center justify-between mb-2">
                   <div className="flex items-center gap-1.5">
-                    <span className="text-sm font-medium" style={{ color: 'var(--color-text-secondary)' }}>Таблицы</span>
-                    <span className="text-xs" style={{ color: 'var(--color-text-quaternary)' }}>
+                    <span className="text-base font-medium" style={{ color: 'var(--color-text-secondary)' }}>Таблицы</span>
+                    <span className="text-sm" style={{ color: 'var(--color-text-quaternary)' }}>
                       {sidebarSearch ? `${filteredTables.length}/${tables.length}` : tables.length}
                     </span>
                   </div>
                   <div className="flex items-center gap-0.5">
                     {/* Hide sidebar toggle (T) */}
-                    <button onClick={() => setTablesVisible(false)} className="p-1 rounded transition-colors" style={{ color: 'var(--color-text-quaternary)' }} title="Скрыть таблицы (T)">
-                      <ChevronUp size={14} />
+                    <button onClick={() => setTablesVisible(false)} className="p-1.5 rounded transition-colors" style={{ color: 'var(--color-text-quaternary)' }} title="Скрыть таблицы (T)">
+                      <ChevronUp size={16} />
                     </button>
                   </div>
                 </div>
                 {/* Search */}
                 <div className="relative mb-2">
-                  <Search size={12} className="absolute left-2 top-1.5" style={{ color: 'var(--color-text-quaternary)', pointerEvents: 'none' }} />
-                  <input type="text" value={sidebarSearch} onChange={e => setSidebarSearch(e.target.value)} placeholder="Поиск..." className="w-full pl-6 pr-2 py-1 text-xs rounded-md outline-none" style={{ background: 'var(--color-bg-surface)', border: '1px solid var(--color-border)', color: 'var(--color-text-primary)' }} />
+                  <Search size={14} className="absolute left-2.5 top-2" style={{ color: 'var(--color-text-quaternary)', pointerEvents: 'none' }} />
+                  <input type="text" value={sidebarSearch} onChange={e => setSidebarSearch(e.target.value)} placeholder="Поиск таблиц..." className="w-full pl-8 pr-3 py-1.5 text-sm rounded-lg outline-none" style={{ background: 'var(--color-bg-surface)', border: '1px solid var(--color-border)', color: 'var(--color-text-primary)' }} />
                 </div>
                 {/* Actions */}
                 <div className="flex gap-1">
-                  <button onClick={() => setShowCreateTable(true)} className="flex-1 flex items-center justify-center gap-1 px-2 py-1 text-xs rounded-md transition-colors cursor-pointer" style={{ background: 'var(--color-brand)', color: '#fff' }} title="Создать таблицу">
-                    <Plus size={12} /> Создать
+                  <button onClick={() => setShowCreateTable(true)} className="flex-1 flex items-center justify-center gap-1 px-2.5 py-1.5 text-sm rounded-lg transition-colors cursor-pointer" style={{ background: 'var(--color-brand)', color: '#fff' }} title="Создать таблицу">
+                    <Plus size={14} /> Создать
                   </button>
                 </div>
               </div>
@@ -522,7 +522,7 @@ export default function Home() {
               {/* Scrollable list */}
               <div className="flex-1 overflow-y-auto p-2 pt-1">
                 {filteredTables.length === 0 ? (
-                  <p className="text-xs text-center py-4" style={{ color: 'var(--color-text-quaternary)' }}>
+                  <p className="text-sm text-center py-4" style={{ color: 'var(--color-text-quaternary)' }}>
                     {sidebarSearch ? 'Ничего не найдено' : 'Нет таблиц'}
                   </p>
                 ) : (
@@ -535,7 +535,7 @@ export default function Home() {
                           <div className="flex items-center gap-1">
                             <button
                               onClick={() => setSelectedTableId(t.id)}
-                              className="flex-1 text-left px-2.5 py-1.5 rounded-lg text-sm transition-colors cursor-pointer"
+                              className="flex-1 text-left px-2.5 py-2 rounded-lg text-base transition-colors cursor-pointer"
                               style={{
                                 background: t.id === selectedTableId ? 'var(--color-brand)' : 'transparent',
                                 color: t.id === selectedTableId ? '#fff' : 'var(--color-text-secondary)',
@@ -559,13 +559,13 @@ export default function Home() {
                                   title="Открыть в новой вкладке"
                                   onClick={e => e.stopPropagation()}
                                 >
-                                  <ExternalLink size={12} />
+                                  <ExternalLink size={14} />
                                 </a>
                                 <button onClick={() => { setEditTableId(t.id); setEditTableName(t.name); }} className="p-1 rounded transition-colors hover:bg-[var(--color-bg-surface-hover)]" style={{ color: 'var(--color-text-quaternary)' }} title="Переименовать">
-                                  <Pencil size={12} />
+                                  <Pencil size={14} />
                                 </button>
                                 <button onClick={() => setConfirmDelTableId(t.id)} className="p-1 rounded transition-colors hover:bg-[var(--color-danger)] hover:text-white" style={{ color: 'var(--color-text-quaternary)' }} title="Удалить">
-                                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
                                 </button>
                               </div>
                             )}
@@ -573,18 +573,18 @@ export default function Home() {
                           {/* Inline rename */}
                           {isEditing && (
                             <div className="flex items-center gap-1 mt-1 px-1">
-                              <input type="text" value={editTableName} onChange={e => setEditTableName(e.target.value)} autoFocus className="flex-1 px-2 py-1 text-xs rounded outline-none" style={{ background: 'var(--color-bg-surface)', border: '1px solid var(--color-brand)', color: 'var(--color-text-primary)' }} onKeyDown={e => { if (e.key === 'Enter') handleRenameTable(t.id); if (e.key === 'Escape') setEditTableId(null); }} />
-                              <button onClick={() => handleRenameTable(t.id)} className="p-1 rounded" style={{ color: 'var(--color-brand)' }}><Check size={12} /></button>
-                              <button onClick={() => setEditTableId(null)} className="p-1 rounded" style={{ color: 'var(--color-text-quaternary)' }}><X size={12} /></button>
+                              <input type="text" value={editTableName} onChange={e => setEditTableName(e.target.value)} autoFocus className="flex-1 px-2 py-1.5 text-sm rounded outline-none" style={{ background: 'var(--color-bg-surface)', border: '1px solid var(--color-brand)', color: 'var(--color-text-primary)' }} onKeyDown={e => { if (e.key === 'Enter') handleRenameTable(t.id); if (e.key === 'Escape') setEditTableId(null); }} />
+                              <button onClick={() => handleRenameTable(t.id)} className="p-1 rounded" style={{ color: 'var(--color-brand)' }}><Check size={14} /></button>
+                              <button onClick={() => setEditTableId(null)} className="p-1 rounded" style={{ color: 'var(--color-text-quaternary)' }}><X size={14} /></button>
                             </div>
                           )}
                           {/* Delete confirm */}
                           {isConfirming && (
-                            <div className="px-2 py-1.5 mt-1 rounded text-xs" style={{ background: 'var(--color-danger)', color: '#fff' }}>
+                            <div className="px-2.5 py-2 mt-1 rounded text-sm" style={{ background: 'var(--color-danger)', color: '#fff' }}>
                               <p className="font-medium mb-1">Удалить &quot;{t.name}&quot;?</p>
                               <div className="flex gap-1">
-                                <button onClick={() => handleDeleteTable(t.id)} className="px-2 py-0.5 rounded text-xs" style={{ background: 'rgba(255,255,255,0.2)', color: '#fff' }}>Да</button>
-                                <button onClick={() => setConfirmDelTableId(null)} className="px-2 py-0.5 rounded text-xs" style={{ background: 'rgba(255,255,255,0.1)', color: '#fff' }}>Нет</button>
+                                <button onClick={() => handleDeleteTable(t.id)} className="px-2.5 py-1 rounded text-sm" style={{ background: 'rgba(255,255,255,0.2)', color: '#fff' }}>Да</button>
+                                <button onClick={() => setConfirmDelTableId(null)} className="px-2.5 py-1 rounded text-sm" style={{ background: 'rgba(255,255,255,0.1)', color: '#fff' }}>Нет</button>
                               </div>
                             </div>
                           )}
@@ -599,17 +599,17 @@ export default function Home() {
 
             {/* Main content — D toggle */}
             {dataVisible && (
-            <div className={tablesVisible ? 'flex-1 min-w-0' : 'w-full'}>
+            <div className={tablesVisible ? 'flex-1 min-w-0 flex flex-col' : 'w-full'}>
               {/* Show T/D toggle buttons when one section is hidden */}
               {!tablesVisible && (
                 <div className="mb-3 flex items-center gap-2">
-                  <button onClick={() => setTablesVisible(true)} className="flex items-center gap-1.5 px-2.5 py-1.5 text-xs rounded-lg transition-colors cursor-pointer" style={{ background: 'var(--color-brand)', color: '#fff' }} title="Показать таблицы (T)">
-                    <ChevronDown size={12} /> <Table2 size={12} /> Таблицы
+                  <button onClick={() => setTablesVisible(true)} className="flex items-center gap-1.5 px-2.5 py-1.5 text-sm rounded-lg transition-colors cursor-pointer" style={{ background: 'var(--color-brand)', color: '#fff' }} title="Показать таблицы (T)">
+                    <ChevronDown size={14} /> <Table2 size={14} /> Таблицы
                   </button>
                 </div>
               )}
               {selectedTable && tableData ? (
-                <div key={selectedTableId} className="rounded-xl border overflow-hidden" style={{ background: 'var(--color-bg-panel)', borderColor: 'var(--color-border)' }}>
+                <div key={selectedTableId} className="rounded-xl border overflow-hidden flex flex-col" style={{ background: 'var(--color-bg-panel)', borderColor: 'var(--color-border)', minHeight: 0 }}>
                   <DataTable
                     tableName={selectedTable.name}
                     columns={columns}
@@ -635,7 +635,7 @@ export default function Home() {
                   />
                 </div>
               ) : (
-                <div className="rounded-xl border p-24 text-center" style={{ background: 'var(--color-bg-panel)', borderColor: 'var(--color-border)' }}>
+                <div className="rounded-xl border p-24 text-center flex-shrink-0" style={{ background: 'var(--color-bg-panel)', borderColor: 'var(--color-border)' }}>
                   {fetching ? (
                     <p className="text-base" style={{ color: 'var(--color-text-tertiary)' }}>Загрузка данных...</p>
                   ) : tablesVisible ? (
@@ -648,8 +648,8 @@ export default function Home() {
               {/* Show D toggle when hidden */}
               {!dataVisible && (
                 <div className="mt-3 flex items-center gap-2">
-                  <button onClick={() => setDataVisible(true)} className="flex items-center gap-1.5 px-2.5 py-1.5 text-xs rounded-lg transition-colors cursor-pointer" style={{ background: 'var(--color-brand)', color: '#fff' }} title="Показать данные (D)">
-                    <ChevronDown size={12} /> <Grid3X3 size={12} /> Данные
+                  <button onClick={() => setDataVisible(true)} className="flex items-center gap-1.5 px-2.5 py-1.5 text-sm rounded-lg transition-colors cursor-pointer" style={{ background: 'var(--color-brand)', color: '#fff' }} title="Показать данные (D)">
+                    <ChevronDown size={14} /> <Grid3X3 size={14} /> Данные
                   </button>
                 </div>
               )}
