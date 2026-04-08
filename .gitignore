@@ -17,9 +17,6 @@ next-env.d.ts
 # User data (store.json contains personal data — keep local)
 data/store.json
 
-# Screenshots (generated locally)
-screenshots/
-
 # Playwright
 playwright-report/
 test-results/
